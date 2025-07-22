@@ -1,0 +1,40 @@
+[workspace]
+resolver = "2"
+members = [
+    "shared",
+    "axum-server", 
+    "actixweb-server",
+    "benchmarks"
+]
+
+[workspace.dependencies]
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+uuid = { version = "1.0", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+anyhow = "1.0"
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+jsonwebtoken = "9.0"
+bcrypt = "0.15"
+async-graphql = { version = "7.0", features = ["uuid", "chrono"] }
+sqlx = { version = "0.8", features = ["runtime-tokio-rustls", "postgres", "uuid", "chrono"] }
+reqwest = { version = "0.12", features = ["json"] }
+
+[workspace.dependencies.axum]
+version = "0.8"
+features = ["macros", "tokio", "tower-log"]
+
+[workspace.dependencies.actix-web]
+version = "4.0"
+features = ["rustls"]
+
+[workspace.dependencies.tower]
+version = "0.4"
+features = ["full"]
+
+[workspace.dependencies.tower-http]
+version = "0.5"
+features = ["fs", "trace", "cors"]
